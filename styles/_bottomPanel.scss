@@ -1,0 +1,140 @@
+.bottom-section {
+    height: $bottom-height;
+    width: 100%;
+
+    .bottom-section-1 {
+        position: relative;
+        @include flex(center, center, row);
+        width: 71.1rem;
+        background: rgba(255, 255, 255, 0.2);
+        z-index: 1;
+
+        .panel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("/img/bottom-panel-1.png") left no-repeat;
+            background-size: 100% 100%;
+            z-index: 2;
+        }
+
+        .bts-1-1 {
+            @include flex(center, center, column);
+            flex: 1 1 auto;
+            .temperature {
+                font-size: calc(7rem + 1vw);
+                color: #fff;
+                line-height: 7rem;
+            }
+
+            .day-wrapper {
+                background: #a79788;
+                border-radius: 15px;
+                margin-right: 2rem;
+
+                .day {
+                    font-size: 1.5rem;
+                    color: #fff;
+                    margin: 0.1rem 2rem;
+                }
+            }
+        }
+        .bts-1-2 {
+            @include flex(center, center, column);
+            flex: 1 1 auto;
+
+            .weather-icon {
+                background: url("/icons/rainy-1.svg") center center no-repeat;
+                background-size: 100% 100%;
+                height: 90px;
+                width: 90px;
+            }
+            .wind {
+                font-size: 1.5rem;
+                color: #fff;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+    .bottom-section-2,
+    .bottom-section-3,
+    .bottom-section-4,
+    .bottom-section-5,
+    .bottom-section-6 {
+        position: relative;
+        @include flex(center, center, column);
+        width: 25rem;
+        background: rgba(255, 255, 255, 0.2);
+        margin-left: 2px;
+
+        .panel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("/img/bottom-panel-2-6.png") left no-repeat;
+            background-size: 100% 100%;
+            z-index: 2;
+        }
+
+        .day-wrapper {
+            background: #a79788;
+            border-radius: 15px;
+
+            .day {
+                font-size: 1.5rem;
+                color: #fff;
+                margin: 0.1rem 2rem;
+            }
+        }
+
+        .temperature {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+    }
+    .bottom-section-2 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            margin: 0.6rem auto;
+        }
+    }
+    .bottom-section-3 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            margin: 0.6rem auto;
+        }
+    }
+    .bottom-section-4 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            margin: 0.6rem auto;
+        }
+    }
+    .bottom-section-5 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            margin: 0.6rem auto;
+        }
+    }
+    .bottom-section-6 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            margin: 0.6rem auto;
+        }
+    }
+}

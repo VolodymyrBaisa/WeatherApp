@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    //outline: 1px solid #66b8da !important;
 }
 
 html,
@@ -11,6 +12,7 @@ body {
 }
 
 body {
+    @include flex(center, center, column);
     background: $background-gradient;
     height: 100vh;
 }

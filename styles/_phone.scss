@@ -1,0 +1,32 @@
+@media screen and (max-width: $phone-min-width) {
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+
+        .top-section {
+            .left-section {
+                height: 65vh;
+            }
+
+            .map-section {
+                display: none;
+            }
+        }
+
+        .bottom-section {
+            flex-wrap: wrap;
+            height: 35vh;
+
+            .bottom-section-1 {
+                flex: 0 75%;
+            }
+            .bottom-section-2,
+            .bottom-section-3,
+            .bottom-section-4,
+            .bottom-section-5,
+            .bottom-section-6 {
+                flex: 1 20%;
+            }
+        }
+    }
+}

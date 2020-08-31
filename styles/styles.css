@@ -12,7 +12,375 @@ body {
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: linear-gradient(231.93deg, #214e75 14.43%, rgba(81, 119, 153, 0.923127) 52.8%, rgba(156, 103, 58, 0.363297) 52.81%, rgba(100, 93, 88, 0.68) 79.01%);
   height: 100vh;
 }
+
+.left-section {
+  position: relative;
+  height: 65vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25rem;
+          flex: 1 1 25rem;
+}
+
+.left-section .panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/img/left-panel.png") left no-repeat;
+  background-size: 100% 65vh;
+  z-index: 2;
+}
+
+.left-section .left-top-section,
+.left-section .left-bottom-section {
+  height: 100%;
+  width: 100%;
+}
+
+.left-section .left-top-section {
+  margin-bottom: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.left-section .left-bottom-section {
+  margin-bottom: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.map-section {
+  height: 65vh;
+  -webkit-box-flex: 10;
+      -ms-flex: 10 1 auto;
+          flex: 10 1 auto;
+}
+
+.bottom-section {
+  height: 25vh;
+  width: 100%;
+}
+
+.bottom-section .bottom-section-1 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 71.1rem;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+.bottom-section .bottom-section-1 .panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/img/bottom-panel-1.png") left no-repeat;
+  background-size: 100% 100%;
+  z-index: 2;
+}
+
+.bottom-section .bottom-section-1 .bts-1-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.bottom-section .bottom-section-1 .bts-1-1 .temperature {
+  font-size: calc(7rem + 1vw);
+  color: #fff;
+  line-height: 7rem;
+}
+
+.bottom-section .bottom-section-1 .bts-1-1 .day-wrapper {
+  background: #a79788;
+  border-radius: 15px;
+  margin-right: 2rem;
+}
+
+.bottom-section .bottom-section-1 .bts-1-1 .day-wrapper .day {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0.1rem 2rem;
+}
+
+.bottom-section .bottom-section-1 .bts-1-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.bottom-section .bottom-section-1 .bts-1-2 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 90px;
+  width: 90px;
+}
+
+.bottom-section .bottom-section-1 .bts-1-2 .wind {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.bottom-section .bottom-section-2,
+.bottom-section .bottom-section-3,
+.bottom-section .bottom-section-4,
+.bottom-section .bottom-section-5,
+.bottom-section .bottom-section-6 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 25rem;
+  background: rgba(255, 255, 255, 0.2);
+  margin-left: 2px;
+}
+
+.bottom-section .bottom-section-2 .panel,
+.bottom-section .bottom-section-3 .panel,
+.bottom-section .bottom-section-4 .panel,
+.bottom-section .bottom-section-5 .panel,
+.bottom-section .bottom-section-6 .panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/img/bottom-panel-2-6.png") left no-repeat;
+  background-size: 100% 100%;
+  z-index: 2;
+}
+
+.bottom-section .bottom-section-2 .day-wrapper,
+.bottom-section .bottom-section-3 .day-wrapper,
+.bottom-section .bottom-section-4 .day-wrapper,
+.bottom-section .bottom-section-5 .day-wrapper,
+.bottom-section .bottom-section-6 .day-wrapper {
+  background: #a79788;
+  border-radius: 15px;
+}
+
+.bottom-section .bottom-section-2 .day-wrapper .day,
+.bottom-section .bottom-section-3 .day-wrapper .day,
+.bottom-section .bottom-section-4 .day-wrapper .day,
+.bottom-section .bottom-section-5 .day-wrapper .day,
+.bottom-section .bottom-section-6 .day-wrapper .day {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0.1rem 2rem;
+}
+
+.bottom-section .bottom-section-2 .temperature,
+.bottom-section .bottom-section-3 .temperature,
+.bottom-section .bottom-section-4 .temperature,
+.bottom-section .bottom-section-5 .temperature,
+.bottom-section .bottom-section-6 .temperature {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.bottom-section .bottom-section-2 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  margin: 0.6rem auto;
+}
+
+.bottom-section .bottom-section-3 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  margin: 0.6rem auto;
+}
+
+.bottom-section .bottom-section-4 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  margin: 0.6rem auto;
+}
+
+.bottom-section .bottom-section-5 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  margin: 0.6rem auto;
+}
+
+.bottom-section .bottom-section-6 .weather-icon {
+  background: url("/icons/rainy-1.svg") center center no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  margin: 0.6rem auto;
+}
+
+.main-container {
+  width: 850px;
+  min-height: 90vh;
+  background: linear-gradient(231.93deg, #214e75 14.43%, rgba(81, 119, 153, 0.923127) 52.8%, rgba(156, 103, 58, 0.363297) 52.81%, rgba(100, 93, 88, 0.68) 79.01%);
+  -webkit-box-shadow: 3px 3px 5px #080808, 10px 10px 60px #080808;
+          box-shadow: 3px 3px 5px #080808, 10px 10px 60px #080808;
+}
+
+.main-container .top-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main-container .top-section .left-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-container .top-section .left-section .left-top-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-container .top-section .left-section .left-bottom-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-container .top-section .map-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main-container .bottom-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+/*@import "phone";
+@import "tablet";*/
 /*# sourceMappingURL=styles.css.map */

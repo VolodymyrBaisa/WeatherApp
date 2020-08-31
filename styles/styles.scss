@@ -6,7 +6,53 @@ $background-gradient: linear-gradient(
     rgba(100, 93, 88, 0.68) 79.01%
 );
 
+$left-height: 65vh;
+$bottom-height: 25vh;
+$tablet-min-width: 1024px;
+$phone-min-width: 700px;
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
 @import "global";
 @import "leftPanel";
 @import "mapPanel";
 @import "bottomPanel";
+
+.main-container {
+    width: 850px;
+    min-height: 90vh;
+    background: $background-gradient;
+    box-shadow: 3px 3px 5px #080808, 10px 10px 60px #080808;
+
+    .top-section {
+        @include flex(flex-start, center, row);
+
+        .left-section {
+            @include flex(center, center, column);
+            .left-top-section {
+                @include flex(center, center, column);
+            }
+
+            .left-bottom-section {
+                @include flex(center, center, column);
+            }
+        }
+
+        .map-section {
+            @include flex(center, center, row);
+        }
+    }
+
+    .bottom-section {
+        @include flex(flex-start, stretch, row);
+    }
+}
+
+//Media query
+/*@import "phone";
+@import "tablet";*/

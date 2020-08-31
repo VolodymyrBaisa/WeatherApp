@@ -24,9 +24,9 @@ $phone-min-width: 700px;
 @import "bottomPanel";
 
 .main-container {
-    width: 850px;
-    min-height: 90vh;
-    background: $background-gradient;
+    width: 750px;
+    height: 90vh;
+    background: $background-gradient no-repeat;
     box-shadow: 3px 3px 5px #080808, 10px 10px 60px #080808;
 
     .top-section {
@@ -35,7 +35,7 @@ $phone-min-width: 700px;
         .left-section {
             @include flex(center, center, column);
             .left-top-section {
-                @include flex(center, center, column);
+                @include flex(flex-start, center, column);
             }
 
             .left-bottom-section {
@@ -54,5 +54,5 @@ $phone-min-width: 700px;
 }
 
 //Media query
-/*@import "phone";
-@import "tablet";*/
+@import "phone";
+@import "tablet";

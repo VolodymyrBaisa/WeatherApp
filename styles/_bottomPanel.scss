@@ -5,7 +5,7 @@
     .bottom-section-1 {
         position: relative;
         @include flex(center, center, row);
-        width: 71.1rem;
+        width: 26rem;
         background: rgba(255, 255, 255, 0.2);
         z-index: 1;
 
@@ -16,6 +16,7 @@
             background: url("/img/bottom-panel-1.png") left no-repeat;
             background-size: 100% 100%;
             z-index: 2;
+            pointer-events: none;
         }
 
         .bts-1-1 {
@@ -36,6 +37,7 @@
                     font-size: 1.5rem;
                     color: #fff;
                     margin: 0.1rem 2rem;
+                    white-space: nowrap;
                 }
             }
         }
@@ -55,6 +57,8 @@
                 margin-top: 0.5rem;
             }
         }
+
+        cursor: pointer;
     }
     .bottom-section-2,
     .bottom-section-3,
@@ -63,9 +67,10 @@
     .bottom-section-6 {
         position: relative;
         @include flex(center, center, column);
-        width: 25rem;
+        flex: 1 1 auto;
         background: rgba(255, 255, 255, 0.2);
         margin-left: 2px;
+        cursor: pointer;
 
         .panel {
             position: absolute;
@@ -74,6 +79,7 @@
             background: url("/img/bottom-panel-2-6.png") left no-repeat;
             background-size: 100% 100%;
             z-index: 2;
+            pointer-events: none;
         }
 
         .day-wrapper {

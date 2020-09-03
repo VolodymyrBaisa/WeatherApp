@@ -1,19 +1,21 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     //outline: 1px solid #66b8da !important;
 }
 
 html,
 body {
-    font-size: 62.5%;
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     font-family: "Poppins", sans-serif;
 }
 
 body {
     @include flex(center, center, column);
-    background: $background-gradient center no-repeat;
+    background: $background-gradient no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     width: 100vw;
+    min-width: $min-container-width;
 }

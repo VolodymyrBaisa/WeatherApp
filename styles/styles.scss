@@ -6,10 +6,24 @@ $background-gradient: linear-gradient(
     rgba(100, 93, 88, 0.68) 79.01%
 );
 
-$left-height: 65vh;
-$bottom-height: 25vh;
-$tablet-min-width: 1024px;
-$phone-min-width: 700px;
+$container-width: 65vw;
+$min-container-width: 300px;
+$container-height: 90vh;
+$min-container-height: 500px;
+$min-left-width-section: 25.5rem;
+
+$primary-font-size: 1.5rem;
+$secondary-font-size: 1.3rem;
+$third-font-size: 3.5rem;
+$big-font-size: 7.5rem;
+
+$text-primary-color: #fff;
+$text-secondary-color: #e0e0e0;
+$text-search-color: #7a6b5d;
+$text-wrapper-color: #a79788;
+$placeholder-color: #a09fa8;
+
+$section-background-color: rgba(255, 255, 255, 0.2);
 
 @mixin flex($justify, $align, $direction) {
     display: flex;
@@ -24,27 +38,38 @@ $phone-min-width: 700px;
 @import "bottomPanel";
 
 .main-container {
-    width: 750px;
-    height: 90vh;
+    width: $container-width;
+    min-width: $min-container-width;
+    height: $container-height;
+    min-height: $min-container-height;
     background: $background-gradient no-repeat;
+    background-attachment: fixed;
     box-shadow: 3px 3px 5px #080808, 10px 10px 60px #080808;
+    @include flex(flex-start, stretch, column);
 
     .top-section {
-        @include flex(flex-start, center, row);
+        @include flex(flex-start, stretch, row);
+        flex: 2;
 
         .left-section {
-            @include flex(center, center, column);
+            @include flex(flex-start, stretch, column);
+            min-width: $min-left-width-section;
+
             .left-top-section {
-                @include flex(flex-start, center, column);
+                flex: 1;
+                @include flex(flex-start, stretch, column);
+                .scroll {
+                    flex: 1 0 15vh;
+                }
             }
 
             .left-bottom-section {
-                @include flex(center, center, column);
+                flex: 1;
             }
         }
 
         .map-section {
-            @include flex(center, center, row);
+            flex: 1;
         }
     }
 
@@ -54,5 +79,6 @@ $phone-min-width: 700px;
 }
 
 //Media query
-@import "phone";
+@import "display";
 @import "tablet";
+@import "phone";

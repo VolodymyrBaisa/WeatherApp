@@ -1,28 +1,23 @@
-@media screen and (max-width: $tablet-min-width) {
+@media screen and (max-width: 1060px) and (min-width: 640px) {
+    html,
+    body {
+        font-size: 70%;
+    }
+
     .main-container {
         width: 100vw;
         height: 100vh;
+    }
+}
 
-        .top-section {
-            .left-section {
-                height: 65vh;
-            }
-        }
+@media screen and (max-width: 640px) and (min-width: 500px) {
+    html,
+    body {
+        font-size: 58%;
+    }
 
-        .bottom-section {
-            flex-wrap: wrap;
-            height: 35vh;
-
-            .bottom-section-1 {
-                flex: 0 75%;
-            }
-            .bottom-section-2,
-            .bottom-section-3,
-            .bottom-section-4,
-            .bottom-section-5,
-            .bottom-section-6 {
-                flex: 1 20%;
-            }
-        }
+    .main-container {
+        width: 100vw;
+        height: 100vh;
     }
 }

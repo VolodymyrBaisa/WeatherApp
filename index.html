@@ -18,6 +18,12 @@
         <!-- Styles -->
         <link rel="stylesheet" href="styles/styles.css" />
         <!-- JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"
+            defer
+        ></script>
         <script src="js/app.js" defer></script>
     </head>
     <body>
@@ -27,7 +33,7 @@
                     <div class="panel"></div>
                     <section class="left-top-section">
                         <div class="search-wrapper">
-                            <div class="search-icon"></div>
+                            <div id="searchButton" class="search-icon"></div>
                             <input
                                 type="text"
                                 name="search"
@@ -35,24 +41,57 @@
                                 placeholder="Search new places..."
                             />
                         </div>
-                        <div class="search-result-wrapper-left">
-                            <div class="result">New York, USA</div>
+                        <div id="scrollSearchedPlace" class="scroll"></div>
+                    </section>
+                    <section class="left-bottom-section">
+                        <div class="left-top">
+                            <div class="title">Sunrise & Sunset</div>
+                            <div class="top">
+                                <div class="icons"></div>
+                                <div class="time">6:35 AM</div>
+                                <div class="time-remaining">-1m 46s</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="icons"></div>
+                                <div class="time">5:42 PM</div>
+                                <div class="time-remaining">+2m 22s</div>
+                            </div>
                         </div>
-                        <div class="search-result-wrapper-center">
-                            <div class="result">Chicago, USA</div>
+                        <div class="right-top">
+                            <div class="title">Humidity</div>
+                            <div class="humidity-wrapper">
+                                <div class="humidity-distance">12</div>
+                                <div class="humidity">Normal</div>
+                                <div class="humidity-indicator"></div>
+                            </div>
                         </div>
-                        <div class="search-result-wrapper-right">
-                            <div class="result">Orlando, USA</div>
+                        <div class="left-bottom">
+                            <div class="title">UV Index</div>
+                            <div class="uv-wrapper"></div>
                         </div>
-                        <div class="search-result-wrapper-center">
-                            <div class="result">Atlanta, USA</div>
+                        <div class="right-bottom">
+                            <div class="title">Visibility</div>
+                            <div class="visibility-wrapper">
+                                <div class="visibility-distance">5.2</div>
+                                <div class="visibility">Averaged</div>
+                                <div class="visibility-indicator"></div>
+                            </div>
                         </div>
                     </section>
-                    <section class="left-bottom-section"></section>
                 </section>
-                <section class="map-section"></section>
+                <section class="map-section">
+                    <div class="celsius-button-wrapper">
+                        <div class="panel"></div>
+                        <div class="celsius">°C</div>
+                    </div>
+                    <div class="fahrenheit-button-wrapper">
+                        <div class="panel"></div>
+                        <div class="fahrenheit">°F</div>
+                    </div>
+                </section>
             </section>
             <section class="bottom-section">
+                <!-- Current weather -->
                 <section class="bottom-section-1">
                     <div class="panel"></div>
                     <div class="bts-1-1">
@@ -66,6 +105,7 @@
                         <div class="wind">4mph / 6°</div>
                     </div>
                 </section>
+                <!-- Buttons for next days -->
                 <section class="bottom-section-2">
                     <div class="panel"></div>
                     <div class="day-wrapper">
@@ -99,6 +139,14 @@
                     <div class="temperature">65°</div>
                 </section>
                 <section class="bottom-section-6">
+                    <div class="panel"></div>
+                    <div class="day-wrapper">
+                        <div class="day">SAT</div>
+                    </div>
+                    <div class="weather-icon"></div>
+                    <div class="temperature">69°</div>
+                </section>
+                <section class="bottom-section-7">
                     <div class="panel"></div>
                     <div class="day-wrapper">
                         <div class="day">SUN</div>

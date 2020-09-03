@@ -1,34 +1,32 @@
 .left-section {
     position: relative;
-    height: $left-height;
-    width: 26rem;
-
+    z-index: 1;
     .panel {
         position: absolute;
         width: 100%;
         height: 100%;
         background: url("/img/left-panel.png") left no-repeat;
-        background-size: 100% $left-height;
+        background-size: 100% 100%;
         z-index: 2;
         pointer-events: none;
     }
+
     .left-top-section,
     .left-bottom-section {
-        height: 100%;
-        width: 100%;
+        background: $section-background-color;
     }
+
     .left-top-section {
         margin-bottom: 2px;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 1rem;
-
+        flex: 1;
+        //Search
         .search-wrapper {
             @include flex(center, center, row);
-            height: 5.5vh;
-            width: 100%;
+            height: 3rem;
             background: #fff;
-            border-radius: 10px;
-            margin-bottom: 5px;
+            border-radius: 1rem;
+            margin: 1rem 1rem 0 1rem;
+            overflow: hidden;
 
             .search-icon {
                 width: 2rem;
@@ -36,50 +34,213 @@
                 margin: 0 8px;
                 background: url("/icons/search.svg") center center no-repeat;
                 background-size: 100% 100%;
+                cursor: pointer;
             }
             input {
-                width: 100%;
+                flex: 1;
+                height: 2rem;
                 border: none;
                 outline: none;
+                font-size: $primary-font-size;
+                color: $text-search-color;
                 font-weight: bold;
                 &::placeholder {
-                    color: #a09fa8;
+                    color: $placeholder-color;
                 }
+            }
+        }
+
+        .scroll {
+            overflow: auto;
+            &::-webkit-scrollbar {
+                width: 0;
             }
         }
 
         .search-result-wrapper-left,
         .search-result-wrapper-center,
         .search-result-wrapper-right {
-            background: #a79788;
-            margin: 5px 0;
+            background: $text-wrapper-color;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             box-shadow: 0px 0px 2px #080808;
+            padding: 0.2rem;
+            cursor: pointer;
 
             .result {
-                font-size: 1.5rem;
-                color: #fff;
-                margin: 0.1rem 5rem;
+                @include flex(center, center, column);
+                font-size: $primary-font-size;
+                color: $text-primary-color;
                 text-transform: uppercase;
+                pointer-events: none;
             }
         }
 
         .search-result-wrapper-left {
             border-radius: 0 15px 15px 0;
-            transform: translateX(-5px);
+            transform: translateX(-10px);
+            margin-right: 1rem;
         }
 
         .search-result-wrapper-center {
             border-radius: 15px;
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
         .search-result-wrapper-right {
             border-radius: 15px 0 0 15px;
-            transform: translateX(5px);
+            transform: translateX(10px);
+            margin-left: 1rem;
         }
     }
 
     .left-bottom-section {
-        margin-bottom: 2px;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        .left-top,
+        .right-top,
+        .left-bottom,
+        .right-bottom {
+            .title {
+                padding-left: 1rem;
+                color: $text-primary-color;
+                font-size: $secondary-font-size;
+            }
+        }
+
+        .left-top {
+            margin: 1rem 0.5rem 0.5rem 1rem;
+            overflow: hidden;
+            .top,
+            .bottom {
+                display: grid;
+                grid-template-columns: auto auto;
+                .icons {
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                }
+                .time {
+                    font-size: $primary-font-size;
+                    letter-spacing: 2px;
+                    color: $text-primary-color;
+                    padding-left: 1rem;
+                }
+                .time-remaining {
+                    padding-left: 1rem;
+                    font-size: $secondary-font-size;
+                    color: $text-secondary-color;
+                }
+            }
+            .top {
+                margin-bottom: 5px;
+                .icons {
+                    background: url("/icons/sunrise.svg") center center
+                        no-repeat;
+                    background-size: 100% 100%;
+                    padding: 1rem;
+                }
+            }
+            .bottom {
+                .icons {
+                    background: url("/icons/sunset.svg") center center no-repeat;
+                    background-size: 100% 100%;
+                    padding: 1rem;
+                }
+            }
+        }
+        .right-top {
+            margin: 1rem 1rem 0.5rem 0.5rem;
+            overflow: hidden;
+            .humidity-wrapper {
+                display: grid;
+                grid-template-columns: auto auto;
+
+                .humidity-distance {
+                    position: relative;
+                    font-size: $third-font-size;
+                    color: $text-primary-color;
+                    padding-left: 1rem;
+                    align-self: flex-end;
+                    &::after {
+                        position: absolute;
+                        top: 1rem;
+                        font-size: $secondary-font-size;
+                        color: $text-primary-color;
+                        content: "%";
+                        margin-left: 0.5rem;
+                    }
+                }
+
+                .humidity {
+                    font-size: $secondary-font-size;
+                    color: $text-primary-color;
+                    padding-left: 1rem;
+                    align-self: center;
+                }
+                .humidity-indicator {
+                    justify-self: center;
+                    grid-column-start: 2;
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                    height: 7rem;
+                    width: 2rem;
+                    background: url("/icons/visibility-indicator.svg") center
+                        center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+        .left-bottom {
+            margin: 0.5rem 0.5rem 1rem 1rem;
+            overflow: hidden;
+            .uv-wrapper {
+                background: url("/icons/uv-indicator.svg") center center
+                    no-repeat;
+                background-size: 100% 100%;
+                height: 100%;
+                width: 100%;
+                transform: translateY(-10%);
+                padding: 2rem;
+            }
+        }
+        .right-bottom {
+            margin: 0.5rem 1rem 1rem 0.5rem;
+            overflow: hidden;
+            .visibility-wrapper {
+                display: grid;
+                grid-template-columns: auto auto;
+
+                .visibility-distance {
+                    font-size: $third-font-size;
+                    color: $text-primary-color;
+                    padding-left: 1rem;
+                    align-self: flex-end;
+                    &::after {
+                        display: inline-block;
+                        font-size: $secondary-font-size;
+                        color: $text-primary-color;
+                        content: "mi";
+                        margin-left: 0.5rem;
+                    }
+                }
+                .visibility {
+                    font-size: $secondary-font-size;
+                    color: $text-primary-color;
+                    padding-left: 1rem;
+                    align-self: center;
+                }
+                .visibility-indicator {
+                    justify-self: center;
+                    grid-column-start: 2;
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                    height: 7rem;
+                    width: 2rem;
+                    background: url("/icons/visibility-indicator.svg") center
+                        center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
     }
 }

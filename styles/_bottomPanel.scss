@@ -1,13 +1,14 @@
 .bottom-section {
-    height: $bottom-height;
-    width: 100%;
-
+    @include flex(center, center, row);
+    flex-wrap: wrap;
     .bottom-section-1 {
         position: relative;
         @include flex(center, center, row);
-        width: 26rem;
-        background: rgba(255, 255, 255, 0.2);
+        min-width: $min-left-width-section;
+        background: $section-background-color;
         z-index: 1;
+        margin: 2px 0 0 0;
+        padding: calc(0.2rem + 1vh);
 
         .panel {
             position: absolute;
@@ -21,55 +22,67 @@
 
         .bts-1-1 {
             @include flex(center, center, column);
-            flex: 1 1 auto;
+            flex: 1;
             .temperature {
-                font-size: calc(7rem + 1vw);
-                color: #fff;
+                font-size: $big-font-size;
+                color: $text-primary-color;
                 line-height: 7rem;
             }
 
             .day-wrapper {
-                background: #a79788;
+                background: $text-wrapper-color;
                 border-radius: 15px;
                 margin-right: 2rem;
 
                 .day {
-                    font-size: 1.5rem;
-                    color: #fff;
-                    margin: 0.1rem 2rem;
+                    position: relative;
+                    font-size: $primary-font-size;
+                    color: $text-primary-color;
+                    margin: 0.1rem 2.5rem 0.1rem 2rem;
                     white-space: nowrap;
+                    text-transform: uppercase;
+                    &::after {
+                        position: absolute;
+                        bottom: 0.4rem;
+                        font-size: $secondary-font-size;
+                        color: $text-primary-color;
+                        content: "th";
+                        margin-left: 0.3rem;
+                        text-transform: lowercase;
+                    }
                 }
             }
         }
         .bts-1-2 {
             @include flex(center, center, column);
-            flex: 1 1 auto;
-
+            flex: 1;
             .weather-icon {
                 background: url("/icons/rainy-1.svg") center center no-repeat;
                 background-size: 100% 100%;
-                height: 90px;
-                width: 90px;
+                height: 7.5rem;
+                width: 7.5rem;
             }
             .wind {
-                font-size: 1.5rem;
-                color: #fff;
+                font-size: $primary-font-size;
+                color: $text-primary-color;
                 margin-top: 0.5rem;
             }
         }
 
         cursor: pointer;
     }
+
     .bottom-section-2,
     .bottom-section-3,
     .bottom-section-4,
     .bottom-section-5,
-    .bottom-section-6 {
+    .bottom-section-6,
+    .bottom-section-7 {
         position: relative;
-        @include flex(center, center, column);
-        flex: 1 1 auto;
-        background: rgba(255, 255, 255, 0.2);
-        margin-left: 2px;
+        @include flex(space-between, center, column);
+        flex: 1;
+        background: $section-background-color;
+        margin: 2px 0 0 2px;
         cursor: pointer;
 
         .panel {
@@ -83,64 +96,77 @@
         }
 
         .day-wrapper {
-            background: #a79788;
+            background: $text-wrapper-color;
             border-radius: 15px;
+            padding: 0.1rem 2rem;
+            margin-top: 1rem;
 
             .day {
-                font-size: 1.5rem;
-                color: #fff;
-                margin: 0.1rem 2rem;
+                font-size: $primary-font-size;
+                color: $text-primary-color;
+                text-transform: uppercase;
             }
         }
 
         .temperature {
-            font-size: 1.5rem;
-            color: #fff;
+            margin-bottom: 1rem;
+            font-size: $primary-font-size;
+            color: $text-primary-color;
         }
     }
+
     .bottom-section-2 {
         .weather-icon {
             background: url("/icons/rainy-1.svg") center center no-repeat;
             background-size: 100% 100%;
-            height: 50px;
-            width: 50px;
-            margin: 0.6rem auto;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
         }
     }
     .bottom-section-3 {
         .weather-icon {
             background: url("/icons/rainy-1.svg") center center no-repeat;
             background-size: 100% 100%;
-            height: 50px;
-            width: 50px;
-            margin: 0.6rem auto;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
         }
     }
     .bottom-section-4 {
         .weather-icon {
             background: url("/icons/rainy-1.svg") center center no-repeat;
             background-size: 100% 100%;
-            height: 50px;
-            width: 50px;
-            margin: 0.6rem auto;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
         }
     }
     .bottom-section-5 {
         .weather-icon {
             background: url("/icons/rainy-1.svg") center center no-repeat;
             background-size: 100% 100%;
-            height: 50px;
-            width: 50px;
-            margin: 0.6rem auto;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
         }
     }
     .bottom-section-6 {
         .weather-icon {
             background: url("/icons/rainy-1.svg") center center no-repeat;
             background-size: 100% 100%;
-            height: 50px;
-            width: 50px;
-            margin: 0.6rem auto;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
+        }
+    }
+    .bottom-section-7 {
+        .weather-icon {
+            background: url("/icons/rainy-1.svg") center center no-repeat;
+            background-size: 100% 100%;
+            height: 4.5rem;
+            width: 4.5rem;
+            margin: 0.5rem auto;
         }
     }
 }

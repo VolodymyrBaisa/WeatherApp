@@ -1,32 +1,62 @@
-@media screen and (max-width: $phone-min-width) {
+@media screen and (max-width: 500px) and (min-width: 425px) {
+    html,
+    body {
+        font-size: 62%;
+    }
+
     .main-container {
         width: 100vw;
         height: 100vh;
 
-        .top-section {
-            .left-section {
-                height: 65vh;
-            }
-
-            .map-section {
-                display: none;
-            }
+        .left-section {
+            @include flex(flex-start, stretch, column);
+            width: 100%;
         }
 
-        .bottom-section {
-            flex-wrap: wrap;
-            height: 35vh;
+        .map-section {
+            display: none;
+        }
+    }
+}
 
-            .bottom-section-1 {
-                flex: 0 75%;
-            }
-            .bottom-section-2,
-            .bottom-section-3,
-            .bottom-section-4,
-            .bottom-section-5,
-            .bottom-section-6 {
-                flex: 1 20%;
-            }
+@media screen and (max-width: 425px) and (min-width: 320px) {
+    html,
+    body {
+        font-size: 60%;
+    }
+
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+
+        .left-section {
+            @include flex(flex-start, stretch, column);
+            width: 100%;
+        }
+
+        .map-section {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html,
+    body {
+        font-size: 45%;
+    }
+
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+
+        .left-section {
+            @include flex(flex-start, stretch, column);
+            width: 100%;
+        }
+
+        .map-section {
+            display: none;
         }
     }
 }

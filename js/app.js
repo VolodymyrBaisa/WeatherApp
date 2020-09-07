@@ -16,9 +16,12 @@ const lon = "&lon=";
 const appId = "&appid=166a433c57516f51dfab1f7edaed8413";
 
 //Selectors
+//Top
+//Search
 let searchButtonEl = $("#searchButton");
 let searchEl = $("#search");
 let scrollSearchedPlaceEl = $("#scrollSearchedPlace");
+
 //Bottom panel
 //Current
 //Temperature
@@ -452,6 +455,8 @@ const icons = new Icons();
 const widgets = new Widgets();
 const storage = new LocalStorage();
 (function () {
+    //search el in focus
+    searchEl.focus();
     //Restore searched places
     restoreSearchedPlacesFromLocalStorage();
     //Show the scale bar on the lower left corner
@@ -466,7 +471,6 @@ function restoreSearchedPlacesFromLocalStorage() {
     let places = storage.pull();
     if (!places) return;
     for (let place of places) {
-        console.log(place);
         searchPanel.addSearchedPlace(place, weatherResultFromSavedPlace);
     }
 }

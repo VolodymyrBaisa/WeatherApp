@@ -66,6 +66,9 @@
             box-shadow: 0px 0px 2px #080808;
             padding: 0.2rem;
             cursor: pointer;
+            &:hover {
+                box-shadow: 0px 0px 4px #080808;
+            }
 
             .result {
                 @include flex(center, center, column);

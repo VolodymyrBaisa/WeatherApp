@@ -6,13 +6,20 @@
         position: absolute;
         top: 1rem;
         right: 6rem;
-        z-index: 2;
+        z-index: 1000;
         background: $text-wrapper-color;
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
         cursor: pointer;
         overflow: hidden;
+        transition: all 0.1s linear;
+        &:hover {
+            box-shadow: 0 0 5px #080808;
+            width: 3.2rem;
+            height: 3.2rem;
+            transform: translate(0.1rem, -0.1rem);
+        }
 
         .panel {
             position: absolute;
@@ -36,13 +43,20 @@
         position: absolute;
         top: 1rem;
         right: 2rem;
-        z-index: 2;
+        z-index: 1000;
         background: $text-wrapper-color;
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
         cursor: pointer;
         overflow: hidden;
+        transition: all 0.1s linear;
+        &:hover {
+            box-shadow: 0 0 5px #080808;
+            width: 3.2rem;
+            height: 3.2rem;
+            transform: translate(0.1rem, -0.1rem);
+        }
 
         .panel {
             position: absolute;
@@ -58,6 +72,19 @@
             color: $text-primary-color;
             text-transform: uppercase;
             pointer-events: none;
+        }
+    }
+
+    .active {
+        background: $text-primary-color;
+        .celsius {
+            color: $text-wrapper-color;
+            font-weight: 600;
+        }
+
+        .fahrenheit {
+            color: $text-wrapper-color;
+            font-weight: 600;
         }
     }
 }

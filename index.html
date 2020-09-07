@@ -16,12 +16,24 @@
             type="image/x-icon"
         />
         <!-- Styles -->
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
         <link rel="stylesheet" href="styles/styles.css" />
         <!-- JS -->
         <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"
+            defer
+        ></script>
+        <script
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
             defer
         ></script>
         <script src="js/app.js" defer></script>
@@ -45,114 +57,252 @@
                     </section>
                     <section class="left-bottom-section">
                         <div class="left-top">
+                            <!-- Sunrise & Sunset -->
                             <div class="title">Sunrise & Sunset</div>
                             <div class="top">
                                 <div class="icons"></div>
-                                <div class="time">6:35 AM</div>
-                                <div class="time-remaining">-1m 46s</div>
+                                <div id="sunriseTime" class="time">0:00 AM</div>
+                                <div
+                                    id="sunriseTimeRemaining"
+                                    class="time-remaining"
+                                >
+                                    -0m 0s
+                                </div>
                             </div>
                             <div class="bottom">
                                 <div class="icons"></div>
-                                <div class="time">5:42 PM</div>
-                                <div class="time-remaining">+2m 22s</div>
+                                <div id="sunsetTime" class="time">0:00 PM</div>
+                                <div
+                                    id="sunsetTimeRemaining"
+                                    class="time-remaining"
+                                >
+                                    +0m 0s
+                                </div>
                             </div>
                         </div>
                         <div class="right-top">
+                            <!-- Humidity -->
                             <div class="title">Humidity</div>
                             <div class="humidity-wrapper">
-                                <div class="humidity-distance">12</div>
-                                <div class="humidity">Normal</div>
-                                <div class="humidity-indicator"></div>
+                                <div
+                                    id="currentHumidityDistance"
+                                    class="humidity-distance"
+                                >
+                                    0
+                                </div>
+                                <div id="currentHumidity" class="humidity">
+                                    Normal
+                                </div>
+                                <div class="humidity-indicator">
+                                    <svg
+                                        viewBox="0 0 35 129"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g id="humidityIndicator">
+                                            <path
+                                                id="slider"
+                                                d="M15 0.5H20C28.0081 0.5 34.5 6.99187 34.5 15V114C34.5 122.008 28.0081 128.5 20 128.5H15C6.99187 128.5 0.5 122.008 0.5 114V15C0.5 6.99187 6.99187 0.5 15 0.5Z"
+                                                fill="#C4C4C4"
+                                                stroke="white"
+                                            />
+                                            <path
+                                                id="range-thumb"
+                                                d="M30 110.5C30 117.404 24.4036 123 17.5 123C10.5964 123 5 117.404 5 110.5C5 103.596 10.5964 98 17.5 98C24.4036 98 30 103.596 30 110.5Z"
+                                                fill="white"
+                                            />
+                                        </g>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                         <div class="left-bottom">
+                            <!-- UV Index -->
                             <div class="title">UV Index</div>
-                            <div class="uv-wrapper"></div>
+                            <div class="uv-wrapper">
+                                <svg
+                                    viewBox="0 0 225 92"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g id="uv-Indicator">
+                                        <text
+                                            id="uvDigital"
+                                            x="108"
+                                            y="87"
+                                            text-anchor="middle"
+                                            fill="white"
+                                        >
+                                            0
+                                        </text>
+                                        <path
+                                            id="bg"
+                                            d="M15.5 89.4997C51.5 -8.00006 161.5 -6.00003 197.5 89.4997"
+                                            stroke="white"
+                                            stroke-width="10"
+                                        />
+                                        <path
+                                            id="meter"
+                                            d="M15.5001 89.4967C51.5001 -8.00304 161.5 -6.00301 197.5 89.4967"
+                                            stroke="#FECF59"
+                                            stroke-width="10"
+                                        />
+                                        <g id="numbers">
+                                            <path
+                                                d="M211.08 88.2165H209.425V80.2253L206.985 81.0593V79.6579L210.868 78.2292H211.08V88.2165Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M215.613 83.2809L216.153 78.2634H221.499V79.6989H217.534L217.261 82.0778C217.721 81.8135 218.24 81.6813 218.819 81.6813C219.767 81.6813 220.503 81.9844 221.027 82.5905C221.556 83.1966 221.82 84.0124 221.82 85.0378C221.82 86.0495 221.528 86.8561 220.945 87.4577C220.362 88.0547 219.562 88.3532 218.546 88.3532C217.634 88.3532 216.878 88.0957 216.276 87.5807C215.679 87.0612 215.356 86.3776 215.305 85.53H216.912C216.976 86.013 217.149 86.3845 217.431 86.6442C217.714 86.8994 218.083 87.027 218.539 87.027C219.049 87.027 219.446 86.8447 219.728 86.4802C220.015 86.1156 220.159 85.6188 220.159 84.9899C220.159 84.3838 220.002 83.9053 219.687 83.5544C219.373 83.1989 218.94 83.0212 218.388 83.0212C218.088 83.0212 217.832 83.0622 217.623 83.1442C217.413 83.2217 217.185 83.3766 216.939 83.6091L215.613 83.2809Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M179.859 41.8866H178.204V33.8954L175.764 34.7293V33.328L179.647 31.8993H179.859V41.8866Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M190.64 41.8866H183.948V40.745L187.263 37.1288C187.742 36.5956 188.081 36.1512 188.282 35.7957C188.487 35.4357 188.589 35.0757 188.589 34.7157C188.589 34.2417 188.455 33.8589 188.186 33.5672C187.922 33.2756 187.564 33.1297 187.113 33.1297C186.575 33.1297 186.158 33.2938 185.862 33.6219C185.565 33.95 185.417 34.3989 185.417 34.9686H183.756C183.756 34.3625 183.893 33.8179 184.166 33.3348C184.444 32.8472 184.839 32.4689 185.349 32.2C185.864 31.9312 186.456 31.7967 187.126 31.7967C188.092 31.7967 188.853 32.0405 189.409 32.5282C189.97 33.0112 190.25 33.6812 190.25 34.5379C190.25 35.0347 190.109 35.5565 189.826 36.1034C189.548 36.6457 189.09 37.2632 188.452 37.9559L186.019 40.5604H190.64V41.8866Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M149.98 6.83688C149.424 7.42477 148.775 7.71872 148.032 7.71872C147.157 7.71872 146.46 7.41338 145.94 6.8027C145.421 6.18747 145.161 5.38083 145.161 4.38278C145.161 3.72653 145.293 3.13181 145.557 2.5986C145.822 2.0654 146.198 1.65069 146.685 1.35446C147.173 1.05824 147.738 0.910126 148.381 0.910126C149.383 0.910126 150.178 1.28382 150.766 2.03122C151.354 2.77862 151.648 3.77894 151.648 5.0322V5.49704C151.648 7.29261 151.243 8.66208 150.431 9.60544C149.62 10.5488 148.41 11.0273 146.801 11.041H146.603V9.66696H146.842C147.822 9.65329 148.574 9.41859 149.098 8.96286C149.622 8.50257 149.916 7.79391 149.98 6.83688ZM148.381 6.41989C148.713 6.41989 149.025 6.32419 149.317 6.13278C149.609 5.94138 149.834 5.67705 149.994 5.33981V4.6904C149.994 3.95668 149.843 3.36651 149.543 2.91989C149.242 2.47328 148.852 2.24997 148.374 2.24997C147.895 2.24997 147.512 2.44821 147.225 2.8447C146.943 3.23662 146.801 3.73337 146.801 4.33493C146.801 4.95928 146.945 5.46286 147.232 5.84567C147.519 6.22849 147.902 6.41989 148.381 6.41989Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M73.5564 0.998993V2.37302H73.3513C72.4217 2.38669 71.6788 2.6419 71.1228 3.13864C70.5668 3.63539 70.2364 4.33949 70.1316 5.25095C70.6648 4.6904 71.3461 4.41013 72.1756 4.41013C73.0551 4.41013 73.7478 4.72002 74.2537 5.33981C74.7641 5.9596 75.0193 6.75941 75.0193 7.73923C75.0193 8.75095 74.7208 9.57126 74.1238 10.2002C73.5314 10.8245 72.7521 11.1367 71.7859 11.1367C70.7924 11.1367 69.9858 10.7698 69.366 10.0361C68.7508 9.30238 68.4431 8.34079 68.4431 7.15134V6.58395C68.4431 4.83851 68.867 3.47132 69.7146 2.48239C70.5668 1.49346 71.7905 0.998993 73.3855 0.998993H73.5564ZM71.7722 5.74997C71.4077 5.74997 71.0727 5.85251 70.7674 6.05759C70.4666 6.26266 70.2456 6.5361 70.1043 6.8779V7.38376C70.1043 8.12204 70.2592 8.70993 70.5691 9.14743C70.879 9.58037 71.2801 9.79684 71.7722 9.79684C72.2644 9.79684 72.6541 9.61227 72.9412 9.24313C73.2283 8.87399 73.3719 8.38864 73.3719 7.78708C73.3719 7.18552 73.226 6.69561 72.9344 6.31735C72.6427 5.9391 72.2553 5.74997 71.7722 5.74997Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M26.8487 36.1512H27.8604C28.3709 36.1467 28.7742 36.0145 29.0704 35.7547C29.3712 35.495 29.5216 35.119 29.5216 34.6268C29.5216 34.1528 29.3962 33.786 29.1456 33.5262C28.8995 33.2619 28.5212 33.1297 28.0108 33.1297C27.5642 33.1297 27.1974 33.2596 26.9102 33.5194C26.6231 33.7746 26.4796 34.1095 26.4796 34.5243H24.8184C24.8184 34.0138 24.9529 33.549 25.2218 33.1297C25.4952 32.7105 25.8735 32.3846 26.3565 32.1522C26.8442 31.9152 27.3888 31.7967 27.9903 31.7967C28.9838 31.7967 29.7631 32.0474 30.3282 32.5487C30.8979 33.0454 31.1827 33.7381 31.1827 34.6268C31.1827 35.0734 31.0392 35.495 30.752 35.8914C30.4695 36.2834 30.1026 36.5796 29.6515 36.7801C30.1983 36.967 30.613 37.2609 30.8956 37.662C31.1827 38.063 31.3263 38.5415 31.3263 39.0975C31.3263 39.9907 31.0186 40.7017 30.4034 41.2303C29.7927 41.759 28.9884 42.0233 27.9903 42.0233C27.0333 42.0233 26.2494 41.7681 25.6388 41.2577C25.0281 40.7472 24.7227 40.0682 24.7227 39.2206H26.3839C26.3839 39.6581 26.5297 40.0135 26.8214 40.287C27.1176 40.5604 27.5141 40.6971 28.0108 40.6971C28.5258 40.6971 28.9314 40.5604 29.2276 40.287C29.5239 40.0135 29.672 39.617 29.672 39.0975C29.672 38.5734 29.517 38.1701 29.2071 37.8875C28.8972 37.605 28.4369 37.4637 27.8263 37.4637H26.8487V36.1512Z"
+                                                fill="white"
+                                            />
+                                            <path
+                                                d="M4.24316 88.2165H2.58887V80.2253L0.148438 81.0593V79.6579L4.03125 78.2292H4.24316V88.2165Z"
+                                                fill="white"
+                                            />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
                         <div class="right-bottom">
+                            <!-- Visibility -->
                             <div class="title">Visibility</div>
                             <div class="visibility-wrapper">
-                                <div class="visibility-distance">5.2</div>
-                                <div class="visibility">Averaged</div>
-                                <div class="visibility-indicator"></div>
+                                <div
+                                    id="currentVisibilityDistance"
+                                    class="visibility-distance"
+                                >
+                                    0
+                                </div>
+                                <div id="currentVisibility" class="visibility">
+                                    Averaged
+                                </div>
+                                <div class="visibility-indicator">
+                                    <svg
+                                        viewBox="0 0 35 129"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g id="visibilityIndicator">
+                                            <path
+                                                id="slider"
+                                                d="M15 0.5H20C28.0081 0.5 34.5 6.99187 34.5 15V114C34.5 122.008 28.0081 128.5 20 128.5H15C6.99187 128.5 0.5 122.008 0.5 114V15C0.5 6.99187 6.99187 0.5 15 0.5Z"
+                                                fill="#C4C4C4"
+                                                stroke="white"
+                                            />
+                                            <path
+                                                id="range-thumb"
+                                                d="M30 110.5C30 117.404 24.4036 123 17.5 123C10.5964 123 5 117.404 5 110.5C5 103.596 10.5964 98 17.5 98C24.4036 98 30 103.596 30 110.5Z"
+                                                fill="white"
+                                            />
+                                        </g>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </section>
                 </section>
-                <section class="map-section">
-                    <div class="celsius-button-wrapper">
+                <!-- Buttons C and F -->
+                <section id="map" class="map-section">
+                    <div id="celsius" class="celsius-button-wrapper">
                         <div class="panel"></div>
                         <div class="celsius">°C</div>
                     </div>
-                    <div class="fahrenheit-button-wrapper">
+                    <div
+                        id="fahrenheit"
+                        class="fahrenheit-button-wrapper active"
+                    >
                         <div class="panel"></div>
                         <div class="fahrenheit">°F</div>
                     </div>
                 </section>
             </section>
-            <section class="bottom-section">
+            <section id="currentAndForecast" class="bottom-section">
                 <!-- Current weather -->
                 <section class="bottom-section-1">
                     <div class="panel"></div>
                     <div class="bts-1-1">
-                        <div class="temperature">82°</div>
+                        <div id="currentTemperature" class="temperature">
+                            0°
+                        </div>
                         <div class="day-wrapper">
-                            <div class="day">MONDAY 27</div>
+                            <div id="currentDay" class="day">???</div>
                         </div>
                     </div>
                     <div class="bts-1-2">
-                        <div class="weather-icon"></div>
-                        <div class="wind">4mph / 6°</div>
+                        <div id="currentWeatherIcon" class="weather-icon"></div>
+                        <div id="wind" class="wind">0mph / 0°</div>
                     </div>
                 </section>
-                <!-- Buttons for next days -->
+                <!-- Buttons for forecast days -->
                 <section class="bottom-section-2">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">TUE</div>
+                        <div class="day">???</div>
                     </div>
-                    <div class="weather-icon"></div>
-                    <div class="temperature">60°</div>
+                    <div id="day2WeatherIcon" class="weather-icon"></div>
+                    <div id="day2Temperature" class="temperature">0°</div>
                 </section>
                 <section class="bottom-section-3">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">WED</div>
+                        <div class="day">???</div>
                     </div>
                     <div class="weather-icon"></div>
-                    <div class="temperature">72°</div>
+                    <div class="temperature">0°</div>
                 </section>
                 <section class="bottom-section-4">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">THU</div>
+                        <div class="day">???</div>
                     </div>
                     <div class="weather-icon"></div>
-                    <div class="temperature">76°</div>
+                    <div class="temperature">0°</div>
                 </section>
                 <section class="bottom-section-5">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">FRI</div>
+                        <div class="day">???</div>
                     </div>
                     <div class="weather-icon"></div>
-                    <div class="temperature">65°</div>
+                    <div class="temperature">0°</div>
                 </section>
                 <section class="bottom-section-6">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">SAT</div>
+                        <div class="day">???</div>
                     </div>
                     <div class="weather-icon"></div>
-                    <div class="temperature">69°</div>
+                    <div class="temperature">0°</div>
                 </section>
                 <section class="bottom-section-7">
                     <div class="panel"></div>
                     <div class="day-wrapper">
-                        <div class="day">SUN</div>
+                        <div class="day">???</div>
                     </div>
                     <div class="weather-icon"></div>
-                    <div class="temperature">69°</div>
+                    <div class="temperature">0°</div>
                 </section>
             </section>
         </section>

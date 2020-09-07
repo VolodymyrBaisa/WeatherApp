@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="cloudy" transform="matrix(1,0,0,1,-5,-5)">
+        <path d="M49.7,50.2L16.8,50.2C11.2,50.2 6.6,45.6 6.6,40C6.6,35.6 9.5,31.7 13.6,30.3L13.6,30C13.6,24.9 17.8,20.7 22.9,20.7C24.2,20.7 25.4,21 26.6,21.5C29.1,17.8 33.2,15.5 37.8,15.5C45.2,15.5 51.2,21.5 51.2,28.9C51.2,29.7 51.1,30.5 51,31.3C55.7,31.9 59.3,35.9 59.3,40.7C59.2,45.9 54.9,50.2 49.7,50.2ZM22.9,23.4C19.3,23.4 16.3,26.4 16.3,30C16.3,30.3 16.3,30.7 16.4,31.1L16.6,32.4L15.3,32.6C11.8,33.3 9.2,36.4 9.2,40C9.2,44.2 12.6,47.5 16.7,47.5L49.6,47.5C53.4,47.5 56.4,44.4 56.4,40.7C56.4,36.9 53.3,33.9 49.6,33.9L49.3,33.9L47.3,34L47.9,32.1C48.2,31 48.4,29.9 48.4,28.8C48.4,22.9 43.6,18.1 37.7,18.1C33.7,18.1 30.1,20.3 28.2,23.8L27.5,25.1L26.3,24.4C25.3,23.7 24.1,23.4 22.9,23.4Z" style="fill:white;fill-rule:nonzero;"/>
+    </g>
+</svg>

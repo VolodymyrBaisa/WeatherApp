@@ -237,13 +237,13 @@ body {
 }
 
 .left-section .left-bottom-section .left-top .top .icons {
-  background: url("./icons/sunrise.svg") center center no-repeat;
+  background: url("icons/sunrise.svg") center center no-repeat;
   background-size: 100% 100%;
   padding: 1rem;
 }
 
 .left-section .left-bottom-section .left-top .bottom .icons {
-  background: url("./icons/sunset.svg") center center no-repeat;
+  background: url("icons/sunset.svg") center center no-repeat;
   background-size: 100% 100%;
   padding: 1rem;
 }

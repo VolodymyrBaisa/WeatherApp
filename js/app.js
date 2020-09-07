@@ -380,7 +380,7 @@ class Icons {
             default:
                 icon = "unknown.svg";
         }
-        return `url("/icons/w/${icon}")`;
+        return `url("../icons/w/${icon}")`;
     }
 }
 

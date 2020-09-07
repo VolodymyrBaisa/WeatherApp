@@ -89,8 +89,8 @@ class SearchPanel {
         });
     }
 
-    addSearchedPlace(name, callback) {
-        let searchRes = name;
+    addSearchedPlace(place, callback) {
+        let searchRes = place;
         let showSearchEl = this.getSearchWrappedEl(
             this.getIdForSearchedWrapEl(),
             searchRes
@@ -421,6 +421,27 @@ class Widgets {
     }
 }
 
+class LocalStorage {
+    put(place) {
+        let getItems = localStorage.getItem("weather-app");
+        if (getItems === null) {
+            localStorage.setItem("weather-app", place);
+        } else {
+            if (!getItems.includes(place)) {
+                localStorage.setItem("weather-app", `${getItems};${place}`);
+            }
+        }
+    }
+
+    pull() {
+        let getItems = localStorage.getItem("weather-app");
+        if (getItems) {
+            let values = getItems.split(";");
+            return values;
+        }
+    }
+}
+
 //======Functions======
 //Init
 const searchPanel = new SearchPanel();
@@ -429,14 +450,26 @@ const converter = new Converter();
 const levels = new Levels();
 const icons = new Icons();
 const widgets = new Widgets();
+const storage = new LocalStorage();
 (function () {
-    // show the scale bar on the lower left corner
+    //Restore searched places
+    restoreSearchedPlacesFromLocalStorage();
+    //Show the scale bar on the lower left corner
     L.control.scale().addTo(map);
     //Default weather from geolocation
     weatherResultFromGeolocation();
     //Get weather from search result
     weatherResultFromSearchPlace();
 })();
+
+function restoreSearchedPlacesFromLocalStorage() {
+    let places = storage.pull();
+    if (!places) return;
+    for (let place of places) {
+        console.log(place);
+        searchPanel.addSearchedPlace(place, weatherResultFromSavedPlace);
+    }
+}
 
 function weatherResultFromSearchPlace() {
     searchPanel.searchElementRes((place) => {
@@ -445,9 +478,14 @@ function weatherResultFromSearchPlace() {
         //Forecast
         let wForecast = apiQuery.concat(forecast, query, place, appId);
 
-        searchPanel.addSearchedPlace(place, weatherResultFromSavedPlace);
+        let items = storage.pull();
+        if (!items.includes(place)) {
+            searchPanel.addSearchedPlace(place, weatherResultFromSavedPlace);
+        }
 
         currentAndForecastWeather(current, wForecast);
+        //Save search place to localStorage
+        storage.put(place);
     });
 }
 //Get weather from saved place

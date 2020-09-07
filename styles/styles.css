@@ -849,12 +849,6 @@ body {
           flex: 1 0 15vh;
 }
 
-.main-container .top-section .left-section .left-bottom-section {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
 .main-container .top-section .map-section {
   -webkit-box-flex: 1;
       -ms-flex: 1;

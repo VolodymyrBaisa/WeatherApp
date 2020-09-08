@@ -442,6 +442,7 @@ class LocalStorage {
             let values = getItems.split(";");
             return values;
         }
+        return "";
     }
 }
 
